@@ -6,6 +6,7 @@
 // Generate a self-signed X.509 certificate for a TLS server. Outputs to
 // 'cert.pem' and 'key.pem' and will overwrite existing files.
 
+//go:build go1.13
 // +build go1.13
 
 package https
@@ -21,11 +22,12 @@ import (
 	"crypto/x509/pkix"
 	"encoding/pem"
 	"errors"
-	"golang.org/x/xerrors"
 	"math/big"
 	"net"
 	"strings"
 	"time"
+
+	"golang.org/x/xerrors"
 )
 
 func publicKey(priv interface{}) interface{} {
@@ -45,7 +47,6 @@ func publicKey(priv interface{}) interface{} {
 //
 // See https://github.com/denji/golang-tls and https://stackoverflow.com/questions/47857573/passing-certificate-and-key-as-string-to-listenandservetls/47857805
 func GenerateKeys(opts GenerateOptions) ([]byte, []byte, error) {
-
 	// Validate Options
 	if opts.Host == "" {
 		return nil, nil, errors.New("missing required Host parameter")

@@ -9,14 +9,12 @@ import (
 //
 // Example:
 //
-//  http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { w.WriteHeader(http.StatusNoContent) })
+//	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { w.WriteHeader(http.StatusNoContent) })
 //
-//  opts := GenerateOptions{Host: "domain.com"}
-//  httpServer, _ := Server("8080", opts)
-//  log.Fatal(httpServer.ListenAndServeTLS("", ""))
-//
+//	opts := GenerateOptions{Host: "domain.com"}
+//	httpServer, _ := Server("8080", opts)
+//	log.Fatal(httpServer.ListenAndServeTLS("", ""))
 func Server(port string, opts GenerateOptions) (*http.Server, error) {
-
 	pub, priv, err := GenerateKeys(opts)
 	if err != nil {
 		return nil, err

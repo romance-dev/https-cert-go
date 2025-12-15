@@ -1,34 +1,30 @@
-# https-go [![GoDoc](http://godoc.org/github.com/rocketlaunchr/https-go?status.svg)](http://godoc.org/github.com/rocketlaunchr/https-go)
+<p align="right">
+⭐ &nbsp;&nbsp;<strong>the project to show your appreciation.</strong> :arrow_upper_right:
+</p>
 
-Quickly create a self-signed Go HTTPS server.
+<p align="right">
+<a href="http://godoc.org/github.com/romance-dev/https-cert-go"><img src="http://godoc.org/github.com/romance-dev/https-cert-go?status.svg" /></a>
+<a href="https://goreportcard.com/report/github.com/romance-dev/https-cert-go"><img src="https://goreportcard.com/badge/github.com/romance-dev/https-cert-go" /></a>
+</p>
 
-⭐ **the project to show your appreciation.**
+# Self Signed HTTPS Certificate Generation
+
+Quickly generate TLS certificates in Go.
 
 ## Example
 
 ```go
-package main
+import https "github.com/romance-dev/https-cert-go"
 
-import (
-	"log"
-	"net/http"
-	"github.com/rocketlaunchr/https-go"
-)
+pub, priv, _ := https.GenerateKeys(https.GenerateOptions{Host: "thecucumber.app"})
 
-func main() {
-
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { w.WriteHeader(http.StatusNoContent) })
-
-	httpServer, _ := https.Server("8080", https.GenerateOptions{Host: "thecucumber.app"})
-	log.Fatal(httpServer.ListenAndServeTLS("", ""))
-}
 ```
 
 
 
 ### Extra Notes
 
-Just remember to change the url from http to https. Also configure your http client code/application to allow self-signed certificates otherwise they will spit out an error.
+Just remember to change the server's url from http to https. Also configure your http client code/application to allow self-signed certificates, otherwise they will spit out an error.
 
 
 Other useful packages

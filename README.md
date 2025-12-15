@@ -20,6 +20,7 @@ pub, priv, _ := https.GenerateKeys(https.GenerateOptions{Host: "thecucumber.app"
 
 ```
 
+[![Go Playground](https://img.shields.io/badge/Go-Playground-5593c7.svg?labelColor=41c3f3&style=for-the-badge)](https://go.dev/play/p/kUxlD0RsXyx)
 
 
 ### Extra Notes
